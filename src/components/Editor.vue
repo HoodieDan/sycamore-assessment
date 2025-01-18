@@ -7,7 +7,7 @@ import Underline from '@tiptap/extension-underline'
 const props = defineProps<{ modelValue: string }>()
 const emit = defineEmits(['update:modelValue'])
 
-const editor = ref<Editor | null>(null)
+const editor = ref<Editor | undefined>()
 
 onMounted(() => {
   editor.value = new Editor({
