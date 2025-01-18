@@ -75,6 +75,10 @@ const inactiveClass = ref(
           <span class="mx-4">Add User</span>
         </router-link>
       </nav>
+
+      <div class="absolute bottom-5 text-center w-full text-gray-400">
+        <p>inspired by <a class="underline" href="https://daniel-obode-lendsqr-fe-test.vercel.app/dashboard/users" target="_blank">My Previous Dashboard Project</a></p>
+      </div>
     </div>
   </div>
 </template>
