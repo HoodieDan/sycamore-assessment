@@ -2,6 +2,7 @@
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { Editor, EditorContent } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
+import Underline from '@tiptap/extension-underline'
 
 const props = defineProps<{ modelValue: string }>()
 const emit = defineEmits(['update:modelValue'])
@@ -11,7 +12,7 @@ const editor = ref<Editor | null>(null)
 onMounted(() => {
   editor.value = new Editor({
     content: props.modelValue,
-    extensions: [StarterKit],
+    extensions: [StarterKit, Underline],
     onUpdate: ({ editor }) => {
       emit('update:modelValue', editor.getHTML())
     },
@@ -39,8 +40,8 @@ function toggleUnderline() {
   editor.value?.commands.toggleUnderline()
 }
 
-function toggleHeading(level: number) {
-  editor.value?.commands.toggleHeading({ level })
+function toggleHeading(_level: number) {
+  editor.value?.chain().focus().setHeading({ level: 1 }).run()
 }
 </script>
 
